@@ -8,7 +8,10 @@ inputs:
   output-path:
     required: true
     description: 'Filepath in repository used for final JSON file'
-  length:
+  iv-length:
+    required: false
+    description: 'Optional IV length'
+  key-length:
     required: false
     description: 'Optional IV length'
   key:
@@ -16,12 +19,8 @@ inputs:
     description: 'Optional Key used to overwrite random generation'
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.output-path }}
-    - ${{ inputs.length }}
-    - ${{ inputs.key }}
+  using: 'node12'
+  main: 'src/index.js'
 
 branding:
   icon: 'lock'
