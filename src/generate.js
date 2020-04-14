@@ -9,9 +9,8 @@
 */
 
 // load runtime packages
-const crypto		= require('crypto')
-const fileWrite		= require('./utils/fileWrite')
 const core		= require('@actions/core')
+const fileWrite		= require('./utils/fileWrite')
 
 
 // set runtime fallback config

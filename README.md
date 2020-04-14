@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Add random crypto keys
-        uses: frytg/crypto-keys-action@v1
+        uses: frytg/crypto-keys-action@v0.1
         with:
           output-path: ./my-folder/crypto-keys.json
           iv-length: 16
@@ -49,7 +49,7 @@ const encrypt = function(text){
 
 
 const decrypt = function(text){
-  let decipher = crypto.createDecipheriv(algorithm, tokenBuffer.iv, tokenBuffer.key)
+  let decipher = crypto.createDecipheriv(algorithm, tokens.key, tokens.iv)
   let dec = decipher.update(text, 'hex', 'utf8')
   dec += decipher.final('utf8')
   return dec

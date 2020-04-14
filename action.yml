@@ -1,6 +1,6 @@
 name: 'Crypto Keys for Actions'
 
-description: 'Create easy random key and vector per deployment'
+description: 'Create random key and vector pair per deployment'
 
 author: 'frytg'
 
