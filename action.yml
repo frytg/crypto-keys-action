@@ -1,4 +1,4 @@
-name: 'crypto-vector-actions'
+name: 'Crypto Keys for Actions'
 
 description: 'Create easy random key and vector per deployment'
 
@@ -7,16 +7,16 @@ author: 'frytg'
 inputs:
   output-path:
     required: true
-    description: 'Filepath in repository used for final JSON file'
+    description: 'Filepath in the repository used for final JSON file'
   iv-length:
     required: false
-    description: 'Optional IV length'
+    description: 'Desired iv length'
   key-length:
     required: false
-    description: 'Optional IV length'
+    description: 'Desired key length'
   key:
     required: false
-    description: 'Optional Key used to overwrite random generation'
+    description: 'Optional key used to overwrite random generation'
 
 runs:
   using: 'node12'

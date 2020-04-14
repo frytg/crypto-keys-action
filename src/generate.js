@@ -15,7 +15,7 @@ const core		= require('@actions/core')
 
 
 // set runtime fallback config
-const defaultIvLength		= 5
+const defaultIvLength		= 16
 const defaultKeyLength		= 32
 
 
@@ -29,7 +29,7 @@ const cryptoGenerateKeyAndIv = async function() { try {
 	let outputPath		= core.getInput('output-path', { required: false })
 	let ivLength		= parseInt(core.getInput('iv-length', { required: false }))
 	let keyLength		= parseInt(core.getInput('key-length', { required: false }))
-	let key			= core.getInput('key', { required: false }) + 'sss'
+	let key			= core.getInput('key', { required: false })
 
 
 	// parse config
@@ -41,30 +41,32 @@ const cryptoGenerateKeyAndIv = async function() { try {
 					: defaultKeyLength
 
 	// create random keys
-	let keyBuffer		= key && key != '' 
-					? Buffer.from(key)
-					: Buffer.from(crypto.randomBytes(12).toString('utf8'))
-	let ivBuffer		= Buffer.alloc(ivLength)
+	let keyBuffer		= Buffer.alloc(keyLength*2)
+	keyBuffer		= Buffer.from(Array.prototype.map.call(keyBuffer, () => {
+					return Math.floor(Math.random() * 256) }))
+	let keyString		= key && key != '' 
+					? key
+					: keyBuffer.toString('hex').substr(0, keyLength)
+
+	let ivBuffer		= Buffer.alloc(ivLength*2)
 	ivBuffer		= Buffer.from(Array.prototype.map.call(ivBuffer, () => {
 					return Math.floor(Math.random() * 256) }))
-	console.log({ivBuffer});
+	let ivString		= ivBuffer.toString('hex').substr(0, ivLength)
 	
 
-	// DEV build file for output
+	// build file for output
 	let file = JSON.stringify({
-		key:	keyBuffer.toString('utf8'),
-		iv:	ivBuffer.toString('utf8')
+		key:	keyString,
+		iv:	ivString
 	})
 	console.log('crypto-vector-actions', 'used length for iv >', ivLength)
 	key && key != '' 
-		? console.log('crypto-vector-actions', 'used length for key >', keyLength)
-		: console.log('crypto-vector-actions', 'used key from workflow')
-	
-	console.warn('crypto-vector-actions', {outputPath, ivLength, keyLength})
+		? console.log('crypto-vector-actions', 'used key from workflow')
+		: console.log('crypto-vector-actions', 'used length for key >', keyLength)
 
 
 	// write file
-	await fileWrite('./test.json', file)
+	await fileWrite(outputPath, file)
 
 
 	// log end

@@ -1,5 +1,5 @@
 {
-	"name": "crypto-vector-actions",
+	"name": "crypto-keys-actions",
 	"version": "0.0.1",
 	"description": "Create easy random key and vector per deployment",
 	"author": "Daniel Freytag",
