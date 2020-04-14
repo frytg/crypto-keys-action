@@ -5,7 +5,7 @@ When using the [Node JS Crypto](https://nodejs.org/api/crypto.html) module with 
 
 ## Usage in workflow
 
-Add a step to your `yml` file in `.github/workflows`.
+Add a step to your `.yml` file in `.github/workflows`.
 
 ```yaml
 name: Dummy workflow
@@ -34,6 +34,8 @@ Available parameters:
 
 ## Usage to encrypt/ decrypt
 
+Use a workflow similar to this, to include the key and iv values.
+
 ```js
 const crypto = require('crypto')
 const tokens = require('./my-folder/crypto-keys.json')
@@ -58,9 +60,9 @@ const decrypt = function(text){
 
 ## License
 
-This project is available under the [hippocratic-license](https://github.com/EthicalSource/hippocratic-license), see [LICENSE.md](LICENSE.md).
+This project is available under the [hippocratic-license](https://github.com/EthicalSource/hippocratic-license); see [LICENSE.md](LICENSE.md).
 
 ## Author
 
-- **Daniel Freytag** - [Github](https://github.com/FRYTG) / [Twitter](https://twitter.com/FRYTG)
-- Developed at [**SWR audio lab**](https://github.com/swrlab)
+- Daniel Freytag - [Github](https://github.com/FRYTG) / [Twitter](https://twitter.com/FRYTG)
+- Developed at [SWR audio lab](https://github.com/swrlab)
