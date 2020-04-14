@@ -1,0 +1,15 @@
+name: Test workflow
+
+on:
+  [push]
+
+jobs:
+  crypto-test-local:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test JS
+        uses: ./
+        with:
+          output-path: test.json
+          iv-length: 17
