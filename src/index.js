@@ -8,47 +8,13 @@
 
 */
 
-// load runtime packages
-const crypto		= require('crypto')
-const fileWrite		= require('./utils/fileWrite')
-const core		= require('@actions/core')
-
-
-// set runtime config
-const IV_LENGTH		= 16
-
-
-// define async function
-const cryptoGenerateKeyAndIv = async function() { try {
-	// log start
-	console.log('crypto-vector-actions', 'starting...')
-	console.log('crypto-vector-actions', process.argv)
-	const outputPath	= core.getInput('output-path', { required: true })
-	const ivLength		= core.getInput('iv-length', { required: false })
-	const keyLength		= core.getInput('key-length', { required: false })
-
-
-	// create random keys
-	const key		= crypto.randomBytes(12).toString('utf8')
-	const iv		= crypto.randomBytes(IV_LENGTH).toString('utf8')
-
-
-	// DEV Log output for debugging
-	console.log('crypto-vector-actions', {key, iv, outputPath, ivLength, keyLength})
-
-
-	// write file
-	await fileWrite('./test.json', JSON.stringify(key,iv))
-
-
-	// log end
-	console.log('crypto-vector-actions', 'ended.')
-
-} catch (err) {
-	console.error('crypto-vector error >', err)
-	core.setFailed('crypto-vector failed >' + err)
-} }
-
-
-// run job
-cryptoGenerateKeyAndIv()
+// return buffer based on provided iv and key data
+module.exports = {
+	bufferFrom: function(data) {
+		return {
+			iv: Buffer.from(data.iv, 'utf8'),
+			key: Buffer.from(data.key, 'utf8')
+		}
+	}
+}
+}

@@ -6,7 +6,8 @@
 	"license": "MIT",
 	"main": "src/index.js",
 	"scripts": {
-		"start": "node src/index.js"
+		"start": "node src/index.js",
+		"generate": "node src/generate.js"
 	},
 	"dependencies": {
 		"@actions/core": "1.2.3"

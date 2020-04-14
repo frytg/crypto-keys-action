@@ -1,7 +1,6 @@
 # Config
 config.yaml
 
-
 # Logs
 logs
 *.log
@@ -9,8 +8,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# config
-config.js
+test.json
 
 # Runtime data
 pids
