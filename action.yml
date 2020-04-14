@@ -1,0 +1,28 @@
+name: 'crypto-vector-actions'
+
+description: 'Create easy random key and vector per deployment'
+
+author: 'frytg'
+
+inputs:
+  output-path:
+    required: true
+    description: 'Filepath in repository used for final JSON file'
+  length:
+    required: false
+    description: 'Optional IV length'
+  key:
+    required: false
+    description: 'Optional Key used to overwrite random generation'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.output-path }}
+    - ${{ inputs.length }}
+    - ${{ inputs.key }}
+
+branding:
+  icon: 'lock'
+  color: 'yellow'

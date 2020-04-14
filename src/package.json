@@ -1,0 +1,13 @@
+{
+	"name": "crypto-vector-actions",
+	"version": "0.0.1",
+	"description": "Create easy random key and vector per deployment",
+	"license": "MIT",
+	"main": "index.js",
+	"scripts": {
+	  "start": "node index.js"
+	},
+	"dependencies": {
+	 
+	}
+      }
