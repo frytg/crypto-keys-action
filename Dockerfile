@@ -9,11 +9,11 @@ RUN apk update \
 
 WORKDIR /web/app
 
-COPY package*.json ./
+COPY ./src/package*.json ./
 
 RUN rm -rf node_modules
 RUN npm install
 
-COPY ./src/ .
+COPY ./src/ ./
 
 CMD [ "npm", "start" ]
