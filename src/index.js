@@ -18,14 +18,14 @@ const core		= require('@actions/core')
 const IV_LENGTH		= 16
 
 
-const cryptoGenerateKeyAndIv = async function() {
+// define async function
+const cryptoGenerateKeyAndIv = async function() { try {
 	// log start
 	console.log('crypto-vector-actions', 'starting...')
 	console.log('crypto-vector-actions', process.argv)
 	const outputPath	= core.getInput('output-path', { required: true })
 	const ivLength		= core.getInput('iv-length', { required: false })
 	const keyLength		= core.getInput('key-length', { required: false })
-
 
 
 	// create random keys
@@ -43,6 +43,12 @@ const cryptoGenerateKeyAndIv = async function() {
 
 	// log end
 	console.log('crypto-vector-actions', 'ended.')
-}
 
+} catch (err) {
+	console.error('crypto-vector error >', err)
+	core.setFailed('crypto-vector failed >' + err)
+} }
+
+
+// run job
 cryptoGenerateKeyAndIv()
