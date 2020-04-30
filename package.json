@@ -10,7 +10,7 @@
 		"generate": "node src/generate.js"
 	},
 	"dependencies": {
-		"@actions/core": "1.2.3"
+		"@actions/core": "1.2.4"
 	},
 	"repository": {
 		"type": "git",
