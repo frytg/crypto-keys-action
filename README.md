@@ -58,6 +58,10 @@ const decrypt = function(text){
 }
 ```
 
+## Dev
+
+To build this package, you need `ncc` locally (`npm i -g @vercel/ncc`), then run `yarn build`.
+
 ## License
 
 This project is available under the [hippocratic-license](https://github.com/EthicalSource/hippocratic-license); see [LICENSE.md](LICENSE.md).
