@@ -1,0 +1,15 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  open-pull-requests-limit: 20
+  schedule:
+    interval: daily
+    time: "08:00"
+- package-ecosystem: "github-actions"
+  directory: "/"
+  default_assignees: 
+  - frytg
+  schedule:
+    interval: "daily"
+    time: "08:00"
